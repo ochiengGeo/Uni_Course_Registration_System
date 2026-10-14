@@ -1,3 +1,4 @@
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,15 +12,15 @@ public abstract  class User {
     private String passwordHash;
     private AccountStatus accountStatus;
     private static final String EMAIL_REGEX = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
-    private static final String NAME_REGEX = "^[\\p{L}'\\-,.\\s]{2,50}$";
+    private static final String NAME_REGEX =  "^[\\p{L}]+(?:[-'][\\p{L}]+)*(?: [\\p{L}]+(?:[-'][\\p{L}]+)*)*$";
     private static final Pattern pattern = Pattern.compile(NAME_REGEX);
 
     
 
     //constructor
     protected  User (String userId, String name, String institutionalEmail, String passwordHash) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be empty.");
+        if  (isValidName(name) == false) {
+            throw new IllegalArgumentException("Invalid Name.");
         }
         if (userId == null || userId.trim().isEmpty()) {
             throw new IllegalArgumentException("User ID cannot be empty.");
@@ -72,17 +73,33 @@ public abstract  class User {
         return this.accountStatus;
     }
 
-    void changeName (String newName) {
-        if (newName == null || newName.trim().isEmpty()) {
-            throw new IllegalArgumentException("New Name cannot be empty.");
+
+    private static boolean isValidName(String name) {
+    return name != null
+            && !name.trim().isEmpty()
+            && name.length() >= 2
+            && name.length() <= 50
+            && containsLetter(name)
+            && pattern.matcher(name).matches();
+    }
+        void changeName (String newName) {
+            if (isValidName(newName) == false) {
+            throw new IllegalArgumentException("Invalid New Name");
         }
-        if (!pattern.matcher(newName).matches()) {
-            throw new IllegalArgumentException("Invalid New Name.");
-        }
+        
          if (newName.equalsIgnoreCase(this.name)) {
             throw new IllegalArgumentException("New name cannot be previous name.");
         }
         
         this.name = newName;
     }
+    private static boolean containsLetter(String name) {
+
+    for (int i = 0; i < name.length(); i++) {
+        if (Character.isLetter(name.charAt(i))) {
+            return true;
+        }
+    }
+    return false;
+}
 }
