@@ -82,10 +82,22 @@ public abstract  class User {
             && containsLetter(name)
             && pattern.matcher(name).matches();
     }
-        void changeName (String newName) {
-            if (isValidName(newName) == false) {
-            throw new IllegalArgumentException("Invalid New Name");
-        }
+       void validateNameChange(String newName) {
+    if (!isValidName(newName)) {
+        throw new IllegalArgumentException("Invalid New Name.");
+    }
+
+    if (newName.equalsIgnoreCase(this.name)) {
+        throw new IllegalArgumentException(
+                "New name cannot be previous name."
+        );
+    }
+}
+
+void changeName(String newName) {
+    validateNameChange(newName);
+    this.name = newName;
+}
         
          if (newName.equalsIgnoreCase(this.name)) {
             throw new IllegalArgumentException("New name cannot be previous name.");
