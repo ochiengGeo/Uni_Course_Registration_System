@@ -15,7 +15,7 @@ public class Department {
     public void getDptStudents () {
         System.out.println("Students in the Department of " + dptName + " :\n");
         for (Student student : deptStudents) {
-            System.out.println(i + ". " + student.getUserName() + " - " +student.getUserId() + " - " + student.getUserEmail());
+            System.out.println(i + ". " + student.getName() + " - " +student.getUserId() + " - " + student.getInstitutionalEmail());
             i++;
         }
         System.out.println("Total Number of students: " + deptStudents.size());
