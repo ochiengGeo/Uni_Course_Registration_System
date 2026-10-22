@@ -4,10 +4,33 @@ public class NameChangeDemo {
 
         UniversitySystem universitySystem = new UniversitySystem();
 
-        // Create an Admin and a concrete User here.
+        Admin admin = new Admin(
+                "ADM-001",
+                "System Admin",
+                "admin@egerton.ac.ke",
+                "demo-hash"
+        );
 
-        // Perform the name change.
+        Student student = new Student(
+                "S104",
+                "George Ochieng",
+                "george@egerton.ac.ke",
+                "demo-hash"
+        );
 
-        // Print the updated name and audit records.
+        System.out.println("Before: " + student.getName());
+
+        universitySystem.changeUserName(
+                admin, student, "George Otieno"
+        );
+
+        System.out.println("After: " + student.getName());
+
+        System.out.println("\nAudit records:");
+
+        for (AuditRecord record :
+                universitySystem.getAuditRecords()) {
+            System.out.println(record);
+        }
     }
 }
