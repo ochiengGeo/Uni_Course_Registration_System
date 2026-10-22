@@ -72,5 +72,28 @@ System.out.println("\nAll audit records:");
 for (AuditRecord record : universitySystem.getAuditRecords()) {
     System.out.println(record);
 }
+        System.out.println("\n--- Testing Unchanged Name ---");
+
+int recordsBeforeSameName =
+        universitySystem.getAuditRecords().size();
+
+try {
+    universitySystem.changeUserName(
+            admin, student, "George Kamau"
+    );
+} catch (IllegalArgumentException e) {
+    System.out.println("Change rejected: " + e.getMessage());
+}
+
+System.out.println("Current name: " + student.getName());
+
+System.out.println(
+        "Audit records before: " + recordsBeforeSameName
+);
+
+System.out.println(
+        "Audit records after: "
+                + universitySystem.getAuditRecords().size()
+);
     }
 }
