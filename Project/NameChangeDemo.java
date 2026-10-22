@@ -54,13 +54,14 @@ System.out.println(
         "Audit records after: "
                 + universitySystem.getAuditRecords().size()
 );
-        System.out.println("\n--- Testing Second Name Change ---");
+System.out.println("\n--- Testing Second Name Change ---");
 
 universitySystem.changeUserName(
         admin, student, "George Kamau"
 );
 
 System.out.println("Current name: " + student.getName());
+
 System.out.println(
         "Total audit records: "
                 + universitySystem.getAuditRecords().size()
