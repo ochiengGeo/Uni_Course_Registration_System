@@ -22,18 +22,18 @@ public class Course {
     public void enrollStudent (Student student) {
        if (getAvailableSeats() > 0) {
         enrolledStudents.add(student);
-        System.out.println(student.getUserName() + " has been enrolled successfully.\n" + vaccancy + " seat(s) remaining.");
+        System.out.println(student.getName() + " has been enrolled successfully.\n" + vaccancy + " seat(s) remaining.");
         vaccancy -= 1;
        } 
        else {
-        System.out.println("Failed to add " + student.getUserName() + ". No more seats available in the course: " + courseName + ".");
+        System.out.println("Failed to add " + student.getName() + ". No more seats available in the course: " + courseName + ".");
        }
     }
 
     public void assignLec (Professor professor) {
         lecsInCharge.add(professor);
         System.out.println();
-        System.out.println("Professor " + professor.getUserName());
+        System.out.println("Professor " + professor.getName());
     }
     
 }
