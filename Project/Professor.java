@@ -155,7 +155,12 @@ public class Professor extends User {
         if (!checkSEmail(sEmail)) {System.out.println("Invalid Email Address!\n");}
         }
 
-        Student s1 = new Student(sname, regNo, sEmail);
+        Student s1 = new Student(
+        regNo,
+        sname,
+        sEmail,
+        "DEMO_ONLY_PLACEHOLDER"
+);
         courseCompSci.enrollStudent(s1);
         dpt1.enrollToDpt(s1);
         System.out.println();
