@@ -101,7 +101,13 @@ public class Professor extends User {
 
        Department dpt1 = new Department(department);
 
-       Professor p1 = new Professor(name, staffID, email, department);
+       Professor p1 = new Professor(
+        name,
+        staffID,
+        email,
+        department,
+        "DEMO_ONLY_PLACEHOLDER"
+);
        Course courseCompSci = new Course("Computer Science", department);
        courseCompSci.assignLec(p1);
 
