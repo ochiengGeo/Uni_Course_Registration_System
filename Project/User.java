@@ -81,7 +81,35 @@ public abstract  class User {
             && name.length() <= 50
             && containsLetter(name)
             && pattern.matcher(name).matches();
+}
+
+void validateNameChange(String newName) {
+    if (!isValidName(newName)) {
+        throw new IllegalArgumentException("Invalid New Name.");
     }
+
+    if (newName.equalsIgnoreCase(this.name)) {
+        throw new IllegalArgumentException(
+                "New name cannot be previous name."
+        );
+    }
+}
+
+void changeName(String newName) {
+    validateNameChange(newName);
+    this.name = newName;
+}
+
+private static boolean containsLetter(String name) {
+    for (int i = 0; i < name.length(); i++) {
+        if (Character.isLetter(name.charAt(i))) {
+            return true;
+        }
+    }
+
+    return false;
+}
+}
        void validateNameChange(String newName) {
     if (!isValidName(newName)) {
         throw new IllegalArgumentException("Invalid New Name.");
