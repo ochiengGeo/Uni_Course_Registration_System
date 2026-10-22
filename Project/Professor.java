@@ -3,10 +3,16 @@ import java.util.InputMismatchException;
 
 public class Professor extends User {
     private String assignedDpt;
-    Professor (String name, String Id, String email, String department) {
-        setCredentials (name, Id, email);
-        this.assignedDpt = department;
-    }
+    public Professor(
+        String name,
+        String Id,
+        String email,
+        String department,
+        String passwordHash
+) {
+    super(Id, name, email, passwordHash);
+    this.assignedDpt = department;
+}
 
     public static boolean checkName (String name) {
         String namePattern = "^[a-zA-Z\\s]+$";
