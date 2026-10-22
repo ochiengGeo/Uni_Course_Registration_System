@@ -32,5 +32,27 @@ public class NameChangeDemo {
                 universitySystem.getAuditRecords()) {
             System.out.println(record);
         }
+        System.out.println("\n--- Testing Invalid Name ---");
+
+int recordsBefore = universitySystem.getAuditRecords().size();
+
+try {
+    universitySystem.changeUserName(
+            admin, student, "George!!"
+    );
+} catch (IllegalArgumentException e) {
+    System.out.println("Change rejected: " + e.getMessage());
+}
+
+System.out.println("Current name: " + student.getName());
+
+System.out.println(
+        "Audit records before: " + recordsBefore
+);
+
+System.out.println(
+        "Audit records after: "
+                + universitySystem.getAuditRecords().size()
+);
     }
 }
