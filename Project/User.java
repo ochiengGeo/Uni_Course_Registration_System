@@ -83,6 +83,15 @@ public abstract class User {
 
     public AccountStatus getAccountStatus() {
         return accountStatus;
+        void activateAccountForDemo() {
+           if (accountStatus != AccountStatus.PENDING) {
+              throw new IllegalStateException(
+                "Only pending accounts can be activated."
+        );
+    }
+
+    accountStatus = AccountStatus.ACTIVE;
+}
     }
 
     // Email validation
