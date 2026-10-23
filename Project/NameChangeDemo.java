@@ -95,5 +95,19 @@ System.out.println(
         "Audit records after: "
                 + universitySystem.getAuditRecords().size()
 );
+
+System.out.println("\n--- Testing Audit Protection ---");
+
+try {
+    universitySystem.getAuditRecords().clear();
+    System.out.println("Unexpected: records were cleared.");
+} catch (UnsupportedOperationException e) {
+    System.out.println("Passed: returned audit list is immutable.");
+}
+
+System.out.println(
+        "Audit records remaining: "
+                + universitySystem.getAuditRecords().size()
+);
     }
 }
