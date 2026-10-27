@@ -11,4 +11,10 @@ public class Admin extends User {
                  String institutionalEmail, String passwordHash) {
         super(userId, name, institutionalEmail, passwordHash);
     }
+
+    
+    public boolean hasPermission(Permission permission) {
+       return permissions.contains(permission);
+   }
+
 }
