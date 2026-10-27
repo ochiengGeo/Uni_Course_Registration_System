@@ -1,0 +1,5 @@
+public enum Permission {
+    CREATE_ADMIN,
+    ASSIGN_PERMISSIONS,
+    APPROVE_PRIVILEGE_ESCALATION
+}
