@@ -22,5 +22,16 @@ public class Admin extends User {
 
     return permissions.contains(permission);
 }
+    
+void grantPermission(Permission permission) {
+    if (permission == null) {
+        throw new IllegalArgumentException(
+                "Permission cannot be null."
+        );
+    }
+
+    permissions.add(permission);
+}
+
 
 }
