@@ -14,7 +14,13 @@ public class Admin extends User {
 
     
     public boolean hasPermission(Permission permission) {
-       return permissions.contains(permission);
-   }
+    if (permission == null) {
+        throw new IllegalArgumentException(
+                "Permission cannot be null."
+        );
+    }
+
+    return permissions.contains(permission);
+}
 
 }
