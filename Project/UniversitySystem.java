@@ -47,4 +47,20 @@ public class UniversitySystem {
     public List<AuditRecord> getAuditRecords() {
         return List.copyOf(auditRecords);
     }
+
+    
+private void verifyPermissionAssignmentAuthority(Admin requester) {
+    if (requester == null) {
+        throw new IllegalArgumentException(
+                "Requester cannot be null."
+        );
+    }
+
+    if (!requester.hasPermission(Permission.ASSIGN_PERMISSIONS)) {
+        throw new SecurityException(
+                "Admin is not authorized to assign permissions."
+        );
+    }
+}
+
 }
