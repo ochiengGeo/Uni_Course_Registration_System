@@ -63,4 +63,15 @@ private void verifyPermissionAssignmentAuthority(Admin requester) {
     }
 }
 
+private void verifyNoSelfEscalation(
+        Admin requester,
+        Admin target) {
+
+    if (requester == target) {
+        throw new SecurityException(
+                "Admins cannot approve their own privilege escalation."
+        );
+    }
+}
+
 }
